@@ -1,4 +1,4 @@
-function [particles,trajectories] = hexapoledipoletransition(particles,trajectories,param,a,b,c)
+function [particles,trajectories] = hexapoledipoletransition(particles,trajectories,param,gaussparam)
 %% function definition
 %This is just an instrument that has the simple job of adding a random
 %variable to edit the phase of each and every trajectory, based on
@@ -15,6 +15,7 @@ function [particles,trajectories] = hexapoledipoletransition(particles,trajector
 %corresponding rotation matrix is completed, with each rotation matrix
 %being generated as the first step of the for loop
 
+[a, b, c] = gaussparam
 N = numel(particles);
 v = vertcat(particles(:).velocity);
 modv = (v(:,1).^2 + v(:,2).^2 + v(:,3).^2).^(0.5);

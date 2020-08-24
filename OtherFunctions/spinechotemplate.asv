@@ -37,9 +37,8 @@ for fieldstep = -300:300
     
     [particles,trajectories] = hexapoledipoletransition(particles,trajectories,parameters(:,:,-),component(-).gaussparam);
     
-    [particles,trajectories] = hexapole(particles,trajectories,parameters(:,:,-),component(-).radius,component(-).length,component(-).fieldstrength);
+    [particles,trajectories] = hexapoledipoletransition(particles,trajectories,parameters(:,:,-),component(-).gaussparam);
     
-    %calculate polarisation at end of run
     alphaweight = 0;
     betaweight = 0;
     for int = 1:numel(particles)
@@ -52,7 +51,6 @@ for fieldstep = -300:300
     pvector(fieldstep+701) = (alphaweight-betaweight)/(alphaweight+betaweight);
     
 end
-%plot result
 Bfield = [-600e-6:2e-6:600e-6]
 plot(Bfield,pvector(401:1001))
 xlabel(['Solenoid B field (T)'])

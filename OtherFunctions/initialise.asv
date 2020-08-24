@@ -34,7 +34,7 @@ component(3).gaussparam = [5.7e-4 0.5 0.1]
 parameters(:,:,3) = [component(3).origin;nz;nx]
 
 %DIPOLE 1
-component(4).name = 'dipole1'
+component(3).name = 'dipole1'
 component(4).angles = [0 0 0]
 component(4).origin = [1 0 520e-3]
 component(4).entrytype = 'smooth'
