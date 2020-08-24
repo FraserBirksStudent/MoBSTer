@@ -15,7 +15,10 @@ function [particles,trajectories] = hexapoledipoletransition(particles,trajector
 %corresponding rotation matrix is completed, with each rotation matrix
 %being generated as the first step of the for loop
 
-[a, b, c] = gaussparam
+a = gaussparam(1,1);
+b = gaussparam(1,2);
+c = gaussparam(1,3);
+
 N = numel(particles);
 v = vertcat(particles(:).velocity);
 modv = (v(:,1).^2 + v(:,2).^2 + v(:,3).^2).^(0.5);
