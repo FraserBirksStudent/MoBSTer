@@ -10,7 +10,7 @@ close all
 %NUMBER OF PARTICLES GENERATED
 N = 1000;
 %initialise to get the parameters vector and the component structure
-[parameters,component] = initialise();
+[parameters,component] = initialisecambridge();
 
 %% for loop to iterate over different solenoid field strengths
 pvector = zeros(601,1);
@@ -26,7 +26,7 @@ for fieldstep = -300:300
 
     [particles,trajectories] = hexapole(particles,trajectories,parameters(:,:,2),component(2).radius,component(2).length,component(2).fieldstrength);
     
-    [particles,trajectories] = hexapoledipoletransition(particles,trajectories,parameters(:,:,3),component(3).gaussparam);
+    %[particles,trajectories] = hexapoledipoletransition(particles,trajectories,parameters(:,:,3),component(3).gaussparam);
     
     [particles,trajectories] = dipole(particles,trajectories,parameters(:,:,4),component(4).entrytype);
     
@@ -38,7 +38,7 @@ for fieldstep = -300:300
     
     [particles,trajectories] = dipole(particles,trajectories,parameters(:,:,8),component(8).entrytype);
     
-    [particles,trajectories] = hexapoledipoletransition(particles,trajectories,parameters(:,:,9),component(9).gaussparam);
+    %[particles,trajectories] = hexapoledipoletransition(particles,trajectories,parameters(:,:,9),component(9).gaussparam);
     
     [particles,trajectories] = hexapole(particles,trajectories,parameters(:,:,10),component(10).radius,component(10).length,component(10).fieldstrength);
     

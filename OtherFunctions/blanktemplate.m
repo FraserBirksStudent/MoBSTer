@@ -12,7 +12,7 @@ close all
 %% initialise
 
 %NUMBER OF PARTICLES GENERATED
-N = 10000
+N = 1000
 %initialise to get the parameters vector and the component structure
 [parameters,component] = initialise()
 
