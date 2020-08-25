@@ -23,7 +23,7 @@ end
 
 if strcmp('sudden', entrytransition) %if the entry transition is sudden
     for i = 1:numel(particles)
-        particles(i).spin = suddenspintransition(particles(i).Bfield,cross(param(3,:)),particles(i).spin);
+        particles(i).spin = suddenspintransition(particles(i).Bfield,param(3,:),particles(i).spin);
         %The spins are rotated from the old field to the new field where
         %both the old and new fields are expressed with lab frame unit
         %vectors. The old field is found from the particles structure and
@@ -34,6 +34,6 @@ end
 % any code related to the form of the dipole goes here
 
 for i = 1:numel(particles)
-    particles(i).Bfield = cross(param(3,:)); %the new b field is saved as the nx direction of the dipole
+    particles(i).Bfield = param(3,:); %the new b field is saved as the nx direction of the dipole
     [particles(i).velocity,particles(i).position] = labtransform(particles(i).velocity,particles(i).position,param);
 end

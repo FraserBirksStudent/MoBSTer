@@ -53,11 +53,11 @@ for fieldstep = -300:300
             alphaweight = alphaweight + particles(int).weight;
         end
     end
-    pvector(fieldstep+701) = (alphaweight-betaweight)/(alphaweight+betaweight);
+    pvector(fieldstep+301) = (alphaweight-betaweight)/(alphaweight+betaweight);
     
 end
 %plot result
 Bfield = [-600e-6:2e-6:600e-6]
-plot(Bfield,pvector(401:1001))
+plot(Bfield,pvector)
 xlabel(['Solenoid B field (T)'])
 ylabel(['Normalised beam polarisation'])
