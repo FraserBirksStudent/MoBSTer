@@ -35,11 +35,9 @@ if strcmp('sudden', entrytransition)
         %the new field is the ny direction of the dipole
     end
 end
-
 for i = 1:numel(particles) %convert to component frame
     [particles(i).velocity,particles(i).position] = frametransform(particles(i).velocity,particles(i).position,param);
 end
-
 for i = 1:numel(particles) %for all particles
     t = (length)/(particles(i).velocity(1,3));%calculate time to travel length of solenoid in component frame
     particles(i).spin = propagatespin(particles(i).spin,gmr,Bstrength,t);% the spin is propagated;

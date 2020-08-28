@@ -32,8 +32,11 @@ function [newparticles,newtrajectories] = hexapole(particles,trajectories,param,
 %ENTRANCE SPIN TRANSITION IS SMOOTH, so spin does not need to be
 %transformed as calpha and cbeta remain fixed relative to the new field
 %directions
-
-stepno = 20;
+NumericalStepWidth = 40e-3; %change the numerical step width that the hexapole uses to solve equations- by default 40e-3.From testing
+%changing this value only makes a difference on the order of 10s nanometers
+%to the beam after it leaves the hexapole, but having it too low results in
+%nasty looking hexapole trajectories
+stepno = round(length/NumericalStepWidth);%
 [particles,trajectories] = aperture(particles,trajectories,param,radius); %the entry aperture.
 t = zeros(stepno+1,2*numel(particles));
 pos = cell(stepno+1,2*numel(particles));
@@ -50,6 +53,8 @@ end
 % i am going to arbitratily say that it is the alpha spin state (first
 % number) that is focused and the beta spin state(second number) that is
 % de-focused
+opts = odeset('RelTol',1e-2); %this is the error tolerance- in practice changing this only causes deviations on the sub nanometre scale
+%By default it is set to 1%
 for i = 1:numel(particles)%propagates each particle in turn and creates the x, y, z matrices
     %first line just makes new trajectories match the old trajectories
     %(with duplicates every other trajectory)
@@ -66,9 +71,9 @@ for i = 1:numel(particles)%propagates each particle in turn and creates the x, y
     
     totaltime = length/particles(i).velocity(1,3);
     k = -1;%solve differential equation for each particle
-    [tv1, Yv1] = ode23(@(t,Y) cartesianhexapole(t,Y,k,fieldstrength,radius), [0:totaltime/stepno:totaltime], [particles(i).position(2),particles(i).velocity(2),particles(i).position(1),particles(i).velocity(1)]);
+    [tv1, Yv1] = ode23(@(t,Y) cartesianhexapole(t,Y,k,fieldstrength,radius), [0:totaltime/stepno:totaltime], [particles(i).position(2),particles(i).velocity(2),particles(i).position(1),particles(i).velocity(1)],opts);
     k = 1;
-    [tv2, Yv2] = ode23(@(t,Y) cartesianhexapole(t,Y,k,fieldstrength,radius), [0:totaltime/stepno:totaltime], [particles(i).position(2),particles(i).velocity(2),particles(i).position(1),particles(i).velocity(1)]);
+    [tv2, Yv2] = ode23(@(t,Y) cartesianhexapole(t,Y,k,fieldstrength,radius), [0:totaltime/stepno:totaltime], [particles(i).position(2),particles(i).velocity(2),particles(i).position(1),particles(i).velocity(1)],opts);
     %CREATE A 3d matrix with the top layer being x, the second layer being
     %y and the third layer being z, and same with velocity.
     pos(:,(2*i-1)) = mat2cell([Yv1(:,3),Yv1(:,1),tv1*particles(i).velocity(3)],ones(1,stepno+1));

@@ -113,7 +113,7 @@ parameters(:,:,10) = [component(10).origin;nz;nx]
 component(11).name = 'detector'
 component(11).angles = [0 0 225] %[ALPHA BETA GAMMA];
 component(11).origin = [1 -(3024e-3)*cos(pi/4) (1990e-3)-((3024e-3)*cos(pi/4))]
-component(11).radius = 1.5e-3;
+component(11).radius = 3e-3;
 [nz,nx] = angletonormalvector(component(11).angles);
 parameters(:,:,11) = [component(11).origin;nz;nx]
 
