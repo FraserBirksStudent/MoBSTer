@@ -9,8 +9,8 @@ function newspin = suddenspintransition(oldB,newB,spin)
 %returned by this function.
 %this is done by taking the 2 normal vectors, denoted oldB and newB, and
 %first transforming them into the Spin Frame. The Spin Frame is a reference
-%frame where oldB points along spinz, with spinx defined as
-%cross(cross(spinz,labx),spinz), and spiny defined as cross(spinz,spinx).
+%frame where oldB points along spinz, with spiny defined as
+%cross(spinz,labx) normalised, and spinx defined as cross(spiny,spinz).
 %In this way, the definition of the spin x and y axis are kept consistent
 %relative to the lab frame- and consistent with how they are generated.
 
@@ -30,11 +30,13 @@ newB = newB./sqrt(dot(newB,newB));%normalise oldB and newB
 %express spinz,spinx and spiny in terms of field frame unit vectors
 spinz = oldB;
 if spinz == [1 0 0]
-    spiny = cross(spinz,cross([0 1 0],spinz));
-    spinx = cross(spiny,spinz);
-else
-    spinx = cross(cross(spinz,[1 0 0]),spinz);
+    spinx = cross([0 1 0],spinz);
+    spinx = spinx./(sqrt(dot(spinx,spinx)));
     spiny = cross(spinz,spinx);
+else
+    spiny = cross(spinz,[1 0 0])
+    spiny = spiny./(sqrt(dot(spiny,spiny)))
+    spinx = cross(spiny,spinz);
 end
 Rspinframe = [spinx',spiny',spinz']; %create rotation matrix to convert fields to spin frame
 oldBSF = (Rspinframe'*(oldB)')';

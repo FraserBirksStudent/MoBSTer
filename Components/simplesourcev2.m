@@ -36,7 +36,7 @@ unnormalised = cos(theta)+1i*sin(theta);
 numbers = rand(N,1);
 normfactors = [sqrt(numbers), sqrt(1-numbers)];
 spinvector = normfactors.*unnormalised;
-
+%spinvector = [zeros(N,1) ones(N,1)];
 %store the initial postions in the trajectory structure and all the initial
 %information in the particle structure
 %initialise structures (Spin must be added here!)
