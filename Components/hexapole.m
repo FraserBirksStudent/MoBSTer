@@ -63,13 +63,15 @@ for i = 1:numel(particles)%propagates each particle in turn and creates the x, y
     %assign each of the focusing and de-focusing trajectories the correct
     %spin states using the projection operator. Then assign them the
     %correct weights using the dot product that vector with itself.
+    totaltime = length/particles(i).velocity(1,3);
     
     newparticles(2*i-1).spin = ([0 0;0 1]*(particles(i).spin)')';
     newparticles(2*i-1).weight = dot(newparticles(2*i-1).spin,newparticles(2*i-1).spin);
     newparticles(2*i).spin = ([1 0;0 0]*(particles(i).spin)')';
     newparticles(2*i).weight = dot(newparticles(2*i).spin,newparticles(2*i).spin);
+    newparticles(2*i-1).time = newparticles(2*i-1).time+totaltime;
+    newparticles(2*i).time = newparticles(2*i-1).time+totaltime;
     
-    totaltime = length/particles(i).velocity(1,3);
     k = -1;%solve differential equation for each particle
     [tv1, Yv1] = ode23(@(t,Y) cartesianhexapole(t,Y,k,fieldstrength,radius), [0:totaltime/stepno:totaltime], [particles(i).position(2),particles(i).velocity(2),particles(i).position(1),particles(i).velocity(1)],opts);
     k = 1;
