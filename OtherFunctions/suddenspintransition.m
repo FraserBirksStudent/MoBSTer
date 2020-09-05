@@ -34,8 +34,8 @@ if spinz == [1 0 0]
     spinx = spinx./(sqrt(dot(spinx,spinx)));
     spiny = cross(spinz,spinx);
 else
-    spiny = cross(spinz,[1 0 0])
-    spiny = spiny./(sqrt(dot(spiny,spiny)))
+    spiny = cross(spinz,[1 0 0]);
+    spiny = spiny./(sqrt(dot(spiny,spiny)));
     spinx = cross(spiny,spinz);
 end
 Rspinframe = [spinx',spiny',spinz']; %create rotation matrix to convert fields to spin frame
