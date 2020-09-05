@@ -1,4 +1,4 @@
-function [particles,trajectories] = rectangularblockaperture(particles,trajectories,param,width,length)
+function [particles,trajectories] = rectangularblockaperture(particles,trajectories,param,width,height)
 %% function definition
 %This is a rectangular aperture that operates the exact same as the
 %circular aperture but instead of removing particles within a radius it
@@ -15,7 +15,7 @@ for i = 1:numel(particles)
     [particles(i).velocity,particles(i).position] = frametransform(particles(i).velocity,particles(i).position,param);
 end
 particles = propagate(particles);
-[particles, trajectories] = removetrajecrectangle(particles,trajectories,width,length,1);
+[particles, trajectories] = removetrajecrectangle(particles,trajectories,width,height,1);
 trajectories = addtotrajectories(particles,trajectories,param);
 for i = 1:numel(particles)
     [particles(i).velocity,particles(i).position] = labtransform(particles(i).velocity,particles(i).position,param);

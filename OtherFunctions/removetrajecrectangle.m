@@ -1,4 +1,4 @@
-function [newparticles, newtrajectories] = removetrajecrectangle(particles,trajectories,width,length,block)
+function [newparticles, newtrajectories] = removetrajecrectangle(particles,trajectories,width,height,block)
 %% FUNCTION DEFINITION
 %this function finds the particles and corresponding trajectories for
 %particles that are either within(seethrough) or not within(blocking)
@@ -8,7 +8,7 @@ function [newparticles, newtrajectories] = removetrajecrectangle(particles,traje
 %% code
 rm= zeros(1,numel(particles));
 for i = 1:(numel(particles))
-    if abs(particles(i).position(1))<(width/2) && abs(particles(i).position(2))<(length/2)
+    if abs(particles(i).position(1))<(width/2) && abs(particles(i).position(2))<(height/2)
         if block == 0
             rm(i) = i;
         end
