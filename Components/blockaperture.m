@@ -10,7 +10,7 @@ function [particles, trajectories] = blockaperture(particles,trajectories,param,
 %addtotrajectories function
 %The particles are then converted back into the lab frame
 %% Code
-%define the number of steps within the hexapole:
+
 for i = 1:numel(particles)
     [particles(i).velocity,particles(i).position] = frametransform(particles(i).velocity,particles(i).position,param);
 end

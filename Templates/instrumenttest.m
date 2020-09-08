@@ -41,18 +41,11 @@ component(3).entrytype = 'smooth';
 parameters(:,:,3) = [component(3).origin; nz; nx];
 
 
-% Aperture
-component(4).name = 'aperture';
-component(4).angles = [0 0 0];
-component(4).origin = [0 0 700e-3];
-component(4).height = 1e-3;
-component(4).width = 0.5e-3
 
 %YOUR INSTRUMENT HERE
 %component(4).name =
 %component(4).angles =
 %component(4).origin =
-
 [nz,nx] = angletonormalvector(component(4).angles);
 parameters(:,:,4) = [component(4).origin;nz;nx];
 
@@ -68,7 +61,7 @@ Nin = numel(particles);
 tic
 %YOUR INTSTRUMENT HERE
 %[particles,trajectories] = YOURCOMPONENT(particles,trajectories,parameters(:,:,4),)
-[particles,trajectories] = rectangularaperture(particles,trajectories,parameters(:,:,4),component(4).width,component(4).height);
+
 runtime = toc
 Nout = numel(particles);
 end

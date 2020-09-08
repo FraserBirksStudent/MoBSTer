@@ -1,4 +1,11 @@
 function [parameters,component] = initialisecambridge()
+% The following is a complete initialisation of the cambridge machine.
+
+%If you want to see the visualisation, copy and paste this file into the
+%'intialise.m' file and hit the initialise button on the UI.
+
+%This includes hexapole dipole transition and calibration solenoid
+%instruments.
 %% define instruments
 n = 9 %number of components
 %generate a component structure

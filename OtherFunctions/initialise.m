@@ -1,7 +1,26 @@
 function [parameters,component] = initialise()
+%% definition
+%This function first defines the components structure and then should have
+%all instrument parameters initialised and layed out in the following
+%syntax
+%
+%
+%
+%
+%   name
+%   angles
+%   origin
+%   (any other parameters that the instrument function takes such as length
+%   and radius)
+%   Then two lines of code that initialise the parameters matrix for the
+%   instrument and convert the angles into normal vectors:
+%[nz,nx] = angletonormalvector(component(-).angles);
+%parameters(:,:,-) = [component(-).origin; nz; nx];
+
+
 %% define instruments
 n = 9 %number of components
-%generate a component structure
+%generate the components structure
 component = repmat(struct('name',strings,'angles',zeros(1,3),'origin',zeros(1,3),'radius',0,'length',0,'fieldstrength',0,'entrytype',strings), n, 1 );
 parameters = zeros(3,3,n)
 %% SOURCE
@@ -38,6 +57,18 @@ component(4).origin = [1 0 520e-3]
 component(4).entrytype = 'smooth'
 [nz,nx] = angletonormalvector(component(4).angles)
 parameters(:,:,4) = [component(4).origin; nz; nx]
+
+%CalibrationSolenoid
+component(13).name = 'CalibrationSolenoid';
+component(13).angles = [0 0 0];
+component(13).origin = [1 0 820e-3];
+component(13).radius = 2e-3;
+component(13).length = 200e-3;
+component(13).fieldstrength = 0;
+component(13).GyroMagneticRatio = -203.789*(10^6)
+component(13).entrytype = 'sudden';
+[nz,nx] = angletonormalvector(component(13).angles);
+parameters(:,:,13) = [component(13).origin;nz;nx];
 
 %SOLENOID 1
 component(5).name = 'solenoid1';
@@ -100,10 +131,20 @@ parameters(:,:,10) = [component(10).origin;nz;nx]
 %DETECTOR
 component(11).name = 'detector'
 component(11).angles = [0 0 225] %[ALPHA BETA GAMMA];
-component(11).origin = [1 -(3024e-3)*cos(pi/4) (1990e-3)-((3024e-3)*cos(pi/4))]
-component(11).radius = 3e-3;
+component(11).origin = [1 -(3100e-3)*cos(pi/4) (1990e-3)-((3100e-3)*cos(pi/4))]
+component(11).radius = 1.2e-3;
 [nz,nx] = angletonormalvector(component(11).angles);
 parameters(:,:,11) = [component(11).origin;nz;nx]
+
+%Realblockaperture
+component(12).name = 'realblockaperture'
+component(12).angles = [0 0 225]
+component(12).origin = [1 -(1450e-3)*cos(pi/4) (1990e-3)-((1450e-3)*cos(pi/4))]
+component(12).radius = 0.4e-3
+component(12).height = 5e-3
+component(12).width = 20e-6
+[nz,nx] = angletonormalvector(component(12).angles);
+parameters(:,:,12) = [component(12).origin;nz;nx]
 
 %WRITE TO xslx file
 delete 'InstrumentParameters.xlsx'

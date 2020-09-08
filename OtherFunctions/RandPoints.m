@@ -1,4 +1,4 @@
-function Pos = RandPoints(N,Aperture,Radius)
+function Pos = RandPoints(N,param,Radius)
 %% Function definition:
 % Chooses a number, N, random points within a circular aperture of 
 % radius, Radius, in an aperture specified by the matrix Aperture.
@@ -7,10 +7,10 @@ function Pos = RandPoints(N,Aperture,Radius)
 % Aperture is a 3x3 matrix:
 %
 %  * Row 1: position of the centre of the aperture, [x,y,z] / m
-%  * Row 2: unit normal, gives aperutre orientation, [N_x,N_y,N_z]
+%  * Row 2: unit normal, gives aperutre orientation, nz
 %  * Row 3: unit vector in the aperture plane, giving the azimuthal 
-%         orientation, [X_x,X_y,X_z].
-%
+%         orientation, nx
+
 %  Radius / m is the radius of the aperture
 % 
 %  Pos /m is an output array giving the list of row-vectors, one row per 
@@ -29,10 +29,13 @@ function Pos = RandPoints(N,Aperture,Radius)
 %   the local x and y directions. Here, $\hat{y}$ is obtained from 
 %   $\hat{y}=\hat{z} \times \hat{x}$
 %
+%   A particularly key point is that this function returns a list of random
+%   points of a circle within the lab frame.
+%
 %% Code
 % write out the local x and y unit vectors.
-xhat=Aperture(3,:);
-yhat=cross(Aperture(2,:),Aperture(3,:));
+xhat=param(3,:);
+yhat=cross(param(2,:),param(3,:));
 %
 phi = rand(N,1)*2*pi;    %Choose phi uniformly
 % Choose distance from the centre with probability P(r) ~ r
@@ -45,5 +48,5 @@ ylocal=rho.*sin(phi);
 posx=[xlocal*xhat(1), xlocal*xhat(2), xlocal*xhat(3)];
 posy=[ylocal*yhat(1), ylocal*yhat(2), ylocal*yhat(3)];
 Pos=posx+posy;
-Pos=Pos(:,:)+Aperture(1,:);
+Pos=Pos(:,:)+param(1,:);
 end

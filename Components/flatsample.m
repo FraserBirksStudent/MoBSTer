@@ -7,12 +7,9 @@ function [particles, trajectories] = flatsample(particles, trajectories, param)
 %the locations of each particle is added to the trajectories vector
 %-finally the particles are transformed back into the lab frame
 %at the moment, the surface normal vector is defined to be the opposite to
-%nz:this means alpha, beta and gamma are to align the negative normal
+%nz:this means alpha, beta and gamma are to align the normal
 %vector
 
-% this must also have a section which acts as a smooth transition to
-% re-define the magnetic field the spin is defined relative to to be the
-% reflection of the previous magnetic field direction in the sample
 %% code
 for i = 1:numel(particles)
     [particles(i).velocity,particles(i).position] = frametransform(particles(i).velocity,particles(i).position,param);
