@@ -5,6 +5,9 @@ function [newV,newr] = labtransform(v,r,param)
 %the form of the parameters matrix is [origin;nz,nx]
 %% code
 
+%It generates the corresponding rotation matrix that does the
+%transformation and then operates on the velocity and origin correctly-
+%making sure to add the lab origin to the newly transformed origin.
 xprime = param(3,:);
 yprime = cross(param(2,:),param(3,:));
 zprime = param(2,:);
@@ -12,7 +15,5 @@ R = [xprime',yprime',zprime'];
 
 newV = (R*(v'))';
 newr = param(1,:) + (R*(r'))';
-%spin;
-%newspin = (Rspin*(spin'))';
-%newr = (r(1)*param(3,:) +r(2)*ny + r(3)*param(2,:))+param(1,:);
+
 end

@@ -7,7 +7,8 @@ function [particles, trajectories] = aperture(particles,trajectories,param,radiu
 %have a velocity of 0
 %-calls the remove trajectory function with block argument being = 0 and removes any particles outside the radius of the aperture. 
 %The particles which pass through are added to the trajectory vector using the
-%addtotrajectories function
+%it then calls the add to trajectories function to save the new spatial
+%positions to the trajectories structure
 %The particles are then converted back into the lab frame
 %% Code
 for i = 1:numel(particles)

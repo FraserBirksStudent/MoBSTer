@@ -1,8 +1,9 @@
 function [particles,trajectories] = dipole(particles,trajectories,param,entrytransition)
 %% function definition
-%this is a weak dipole function which acts as a sudden transtion such that
-%spin states are projected into the basis given by the field direction (in
-%this case along ny)
+%this is a dipole function which essentially just acts as a transtion such that
+%spin states are defined relative to a new field direction. in the case of
+%the dipoles this is given by nx it is either smooth or sudden.
+
 %the function does the following: 
 
 %if the entry transition is sudden, it
@@ -12,10 +13,11 @@ function [particles,trajectories] = dipole(particles,trajectories,param,entrytra
 %if the entry transition is smooth, it does nothing, (the spin states
 %remain fixed relative to the new field)
 
+%In both cases, upon exit the field that each particle is defined relative
+%to is assigned to the dipole field direction.
 
-% I NEED TO MAKE SURE THAT I GET THE RELATIVE TRANSITIONS RIGHT HERE- LETS
-% THINK ABOUT TRANSITIONS BETWEEN FRAMES THAT AREN'T ALIGNED WITH THE LAB
-% FRAME.
+%currently this dipole does not alter the spatial information of the
+%trajectories at all, in the future it may be worth adding an aperture.
 %% code
 for i = 1:numel(particles) %convert to component frame
     [particles(i).velocity,particles(i).position] = frametransform(particles(i).velocity,particles(i).position,param);

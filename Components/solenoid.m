@@ -40,7 +40,7 @@ for i = 1:numel(particles) %convert to component frame
 end
 for i = 1:numel(particles) %for all particles
     t = (length)/(particles(i).velocity(1,3));%calculate time to travel length of solenoid in component frame
-    particles(i).spin = propagatespin(particles(i).spin,gmr,Bstrength,t);% the spin is propagated;
+    particles(i).spin = propagatespinhalf(particles(i).spin,gmr,Bstrength,t);% the spin is propagated;
 end
 
 for i = 1:numel(particles) %convert to lab frame

@@ -1,7 +1,16 @@
 
 %% Summary:
 %This is a program that calculates a spin-echo curve (using the
-%cambridge machine setup)
+%cambridge machine setup) 
+
+%A quick note- it only takes 2 spin echo curves- the true beam polarsiation
+%and the variation in total count rate.
+
+%If one wanted to plot a polarisation curve using the 4 point solenoid
+%method, check out the method used in the example 'cambridgebeamenergyv2.m'
+
+%This is of course far more complicated and required a much longer
+%simulation time!
 %%
 clear all
 close all

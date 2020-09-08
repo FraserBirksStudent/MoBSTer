@@ -7,12 +7,12 @@
 %The initialisation step is included for you
 
 %%
-clear all
+clear 
 close all
 %% initialise
 
 %NUMBER OF PARTICLES GENERATED
-N = 1000
+N = 10000
 %initialise to get the parameters vector and the component structure
 [parameters,component] = initialise()
 

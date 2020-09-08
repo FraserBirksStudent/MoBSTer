@@ -8,6 +8,7 @@ function particles = propagate(particles)
 %travel. It then adds this to the time component of each particle and uses
 %this new time to work out how far it's moved in x and y, and makes sure to
 %update these positions also.
+%% code
 for i = 1:numel(particles)
     t = (-particles(i).position(1,3))/(particles(i).velocity(1,3));
     particles(i).time = particles(i).time + t;

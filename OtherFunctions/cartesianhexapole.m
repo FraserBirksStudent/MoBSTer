@@ -1,11 +1,14 @@
 function Fv = cartesianhexapole(t,Y,kfac,fs,radius);
 %% FUNCTION DEFINITON
-%This is the cartesian differential equation solver. It works way better
-%than the other one. for the moment
+%This is the cartesian differential equation solver for a perfect hexapole.
+
 %Heres how it works, m is the mass of the particle, xfac and yfac change
 %depending on the quadrant of the particle.
 %k is a parameter dependent on the field.
 %the 4 coupled differential equations are solved using ode23.
+
+%see the manual for the specific physics layed out here.
+
 m = 1.66*(10^-27)*3;
 C = (fs/(3*(radius)^2));
 k = -(1.082e-26)*6*C*fs;
