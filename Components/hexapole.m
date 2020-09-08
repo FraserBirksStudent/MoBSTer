@@ -39,7 +39,7 @@ function [newparticles,newtrajectories] = hexapole(particles,trajectories,param,
 %transformed as calpha and cbeta remain fixed relative to the new field
 %directions
 
-stepno = 20 %change the number of steps that the hexapole uses to solve equations- 
+stepno = 20; %change the number of steps that the hexapole uses to solve equations- 
 %by default 20. From testing changing this value only makes a difference on the order of 10s nanometers
 %to the beam after it leaves the hexapole, but having it too low results in
 %nasty looking hexapole trajectories, so it is best to have it around this
@@ -86,7 +86,7 @@ for i = 1:numel(particles)%propagates each particle in turn and creates the x, y
     %multiplied by the old weight divided by the old spin vector magnitude
     %(see sec 4.2.1 in manual)
     newparticles(2*i-1).spin = ([0 0;0 1]*(particles(i).spin)')';
-    newparticles(2*i-1).weight = dot(newparticles(2*i-1).spin,newparticles(2*i-1).spin)*((particles(i).weight)/dot(particles(i).spin,particles(i).spin))
+    newparticles(2*i-1).weight = dot(newparticles(2*i-1).spin,newparticles(2*i-1).spin)*((particles(i).weight)/dot(particles(i).spin,particles(i).spin));
     newparticles(2*i).spin = ([1 0;0 0]*(particles(i).spin)')';
     newparticles(2*i).weight = dot(newparticles(2*i).spin,newparticles(2*i).spin)*((particles(i).weight)/dot(particles(i).spin,particles(i).spin));
     newparticles(2*i-1).time = newparticles(2*i-1).time+totaltime;
