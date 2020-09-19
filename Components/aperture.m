@@ -4,7 +4,7 @@ function [particles, trajectories] = aperture(particles,trajectories,param,radiu
 %-Transforms the particle positions and velocities to the aperture frame via
 %the transform function
 %propagates all the particle trajectories in a straight line until they
-%have a velocity of 0
+%have a z position of 0
 %-calls the remove trajectory function with block argument being = 0 and removes any particles outside the radius of the aperture. 
 %The particles which pass through are added to the trajectory vector using the
 %it then calls the add to trajectories function to save the new spatial
