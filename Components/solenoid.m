@@ -32,7 +32,7 @@ if strcmp('sudden', entrytransition)
         %The spins are rotated from the old field to the new field where
         %both the old and new fields are expressed with lab frame unit
         %vectors. The old field is found from the particles structure and
-        %the new field is the ny direction of the dipole
+        %the new field is the nx direction of the dipole
     end
 end
 for i = 1:numel(particles) %convert to component frame

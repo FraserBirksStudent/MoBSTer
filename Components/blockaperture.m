@@ -4,7 +4,7 @@ function [particles, trajectories] = blockaperture(particles,trajectories,param,
 %-Transforms the particle positions and velocities to the aperture frame via
 %the transform function
 %propagates all the particle trajectories in a straight line until they
-%have a velocity of 0
+%have a z position of 0
 %-calls the remove trajectory function with the block argument = 1 and removes any particles inside the radius of the aperture. 
 %The particles which pass through are added to the trajectory vector using the
 %addtotrajectories function

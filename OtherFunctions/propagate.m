@@ -15,4 +15,3 @@ for i = 1:numel(particles)
     particles(i).position = particles(i).position + t*(particles(i).velocity);
 end
 end
-    
