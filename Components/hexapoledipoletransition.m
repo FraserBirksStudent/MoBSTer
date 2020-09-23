@@ -1,3 +1,8 @@
+%% copyright notice
+% Copyright (c) 2020, Fraser Birks and William Allison.
+% All rights reserved.
+% This file is part of MoBSTer - a framework to simulate Molecular Beam Scattering Using Trajectories, subject to the GNU/GPL-3.0-or-later.
+
 function [particles,trajectories] = hexapoledipoletransition(particles,trajectories,param,gaussparam)
 %% function definition
 %This is just an instrument that has the simple job of adding a random
@@ -27,6 +32,6 @@ phi = rand(N,1)*2*pi;
 n = [cos(phi) sin(phi)];
 thetaxy = theta.*n;
 for int = 1:N
-    R = [cos(thetaxy(int,1)/2) -j*sin(thetaxy(int,1)/2); -j*sin(thetaxy(int,1)/2) cos(thetaxy(int,1)/2)]*[cos(thetaxy(int,2)/2) -sin(thetaxy(int,2)/2); sin(thetaxy(int,2)/2) cos(thetaxy(int,2)/2)];
+    R = [cos(thetaxy(int,1)/2) -1i*sin(thetaxy(int,1)/2); -1i*sin(thetaxy(int,1)/2) cos(thetaxy(int,1)/2)]*[cos(thetaxy(int,2)/2) -sin(thetaxy(int,2)/2); sin(thetaxy(int,2)/2) cos(thetaxy(int,2)/2)];
     particles(int).spin = (R*(particles(int).spin)')';
 end

@@ -1,3 +1,8 @@
+%% copyright notice
+% Copyright (c) 2020, Fraser Birks and William Allison.
+% All rights reserved.
+% This file is part of MoBSTer - a framework to simulate Molecular Beam Scattering Using Trajectories, subject to the GNU/GPL-3.0-or-later.
+
 function particles = propagate(particles)
 %% Function Definition
 %This function propagates all particles forwards until the z component = 0
@@ -15,4 +20,3 @@ for i = 1:numel(particles)
     particles(i).position = particles(i).position + t*(particles(i).velocity);
 end
 end
-    

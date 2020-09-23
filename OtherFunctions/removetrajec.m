@@ -1,3 +1,8 @@
+%% copyright notice
+% Copyright (c) 2020, Fraser Birks and William Allison.
+% All rights reserved.
+% This file is part of MoBSTer - a framework to simulate Molecular Beam Scattering Using Trajectories, subject to the GNU/GPL-3.0-or-later.
+
 function [newparticles, newtrajectories] = removetrajec(particles,trajectories,rlimit,block)
 %% FUNCTION DEFINITION
 %this function finds the particles and corresponding trajectories for
@@ -30,7 +35,7 @@ end
 rm(rm==0)=[];
 N = numel(rm);
 %Initialise new structures for particles and trajectories
-newparticles  = repmat(struct('position',zeros(1,3),'velocity',zeros(1,3),'spin',zeros(1,2),'weight',1,'time',0,'Bfield',zeros(1,3)), N, 1 );
+newparticles  = repmat(struct('position',zeros(1,3),'spin',zeros(1,2),'velocity',zeros(1,3),'weight',1,'time',0,'Bfield',zeros(1,3)), N, 1 );
 newtrajectories = repmat(struct('position',zeros(100,3),'Numberofentries',1),N,1);
 for i = 1:N
     %copy across the data corresponding to the particles which passed the

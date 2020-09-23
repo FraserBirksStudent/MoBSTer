@@ -1,4 +1,9 @@
-function [particles,trajectories] = simplesourcev2(N, param, Radius, zspacing,beamenergy)
+%% copyright notice
+% Copyright (c) 2020, Fraser Birks and William Allison.
+% All rights reserved.
+% This file is part of MoBSTer - a framework to simulate Molecular Beam Scattering Using Trajectories, subject to the GNU/GPL-3.0-or-later.
+
+function [particles,trajectories] = simplesourcev2(N, param, Radius, zspacing, beamenergy)
 %% Function definition:
 %this function is a much faster version of the previous simple source
 %function as it uses pre-initialised arrays and structures and does not
@@ -45,6 +50,8 @@ points1 = RandPoints(N,Aperture2,Radius);
 
 vavg = sqrt((2*beamenergy*(10^-3)*1.6e-19)/(1.66*3*(10^-27)));%calculate average molecule velocity based on energy
 
+%If the user wants to change the width of the distribution of the velocity, they need to
+%change the 10 in the below line.
 vdist = vavg + ((vavg/10)/2.355)*randn(N,1); %calculate velocity distribution using FWHM = vavg/10
 
 %Calculate the prefactors matrix, which is for each particle is just the
@@ -66,7 +73,6 @@ spinvector = normfactors.*unnormalised;
 
 %store the initial postions in the trajectory structure and all the initial
 %information in the particle structure
-%initialise structures (Spin must be added here!)
 
 particles = repmat(struct('position',zeros(1,3),'velocity',zeros(1,3),'spin',zeros(1,2),'weight',1,'time',0,'Bfield',[0 0 1]), N, 1 );
 trajectories = repmat(struct('position',zeros(100,3),'Numberofentries',1),N,1);

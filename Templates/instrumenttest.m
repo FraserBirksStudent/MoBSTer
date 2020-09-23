@@ -1,3 +1,8 @@
+%% copyright notice
+% Copyright (c) 2020, Fraser Birks and William Allison.
+% All rights reserved.
+% This file is part of MoBSTer - a framework to simulate Molecular Beam Scattering Using Trajectories, subject to the GNU/GPL-3.0-or-later.
+
 function [particles,trajectories,runtime,Nin,Nout] = instrumenttest()
 %% function definiton:
 % This is a function created to produce a simple test of each instrument
@@ -46,8 +51,8 @@ parameters(:,:,3) = [component(3).origin; nz; nx];
 %component(4).name =
 %component(4).angles =
 %component(4).origin =
-[nz,nx] = angletonormalvector(component(4).angles);
-parameters(:,:,4) = [component(4).origin;nz;nx];
+%[nz,nx] = angletonormalvector(component(4).angles);
+%parameters(:,:,4) = [component(4).origin;nz;nx];
 
 
 %% Run simulation
