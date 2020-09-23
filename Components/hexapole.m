@@ -56,8 +56,7 @@ vel = cell(stepno+1,2*numel(particles));
 %trajectories and particles both the focused and defocused trajectories.
 
 newparticles = repmat(struct('position',zeros(1,3),'velocity',zeros(1,3),'spin',zeros(1,2),'weight',1,'time',0,'Bfield',zeros(1,3)), numel(particles)*2, 1 );
-newtrajectories = repmat(struct('position',zeros(100,3),'Numberofentries',1),numel(particles)*2,1);
-
+newtrajectories = repmat(struct('position',zeros(100,3), 'spin',zeros(100,2),'Numberofentries',1),numel(particles)*2,1);
 
 for i = 1:numel(particles) %convert to component frame
     [particles(i).velocity,particles(i).position] = frametransform(particles(i).velocity,particles(i).position,param);
@@ -131,20 +130,20 @@ yprime = cross(param(2,:),param(3,:));
 zprime = param(2,:);
 R = [xprime',yprime',zprime'];
 labpos = cellfun(@(M)(param(1,:)+(R*M')'),pos,'UniformOutput',false);
-
+%labvel = cellfun(@(M)((R*M')'),vel,'UniformOutput',false);
 %now, add each cell in the labpos function to the trajectories structure
 
 for i = 1:numel(newparticles)
     N = newtrajectories(i).Numberofentries;
     newtrajectories(i).Numberofentries = N+stepno+1;
     newtrajectories(i).position(N+1:N+stepno+1,:) = cell2mat(labpos(:,i));
+    newtrajectories(i).spin(N+1:N+stepno+1,:) = newparticles(i).spin.*ones(stepno+1,2);
 end
 
 %at the end of the hexapole is the next aperture. parameters of next aperture must be defined, (nx and nz the
 %same, but origin shifted by l*nz)
 
 param2 = [param(1,:)+(param(2,:)*length);param(2,:);param(3,:)];
- 
 %next aperture function called with new particles and trajectories
 [newparticles,newtrajectories] = aperture(newparticles,newtrajectories,param2,radius);
 end

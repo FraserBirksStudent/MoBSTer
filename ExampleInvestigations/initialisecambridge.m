@@ -7,7 +7,7 @@ function [parameters,component] = initialisecambridge()
 %This includes hexapole dipole transition and calibration solenoid
 %instruments.
 %% define instruments
-n = 9 %number of components
+n = 13 %number of components
 %generate a component structure
 component = repmat(struct('name',strings,'angles',zeros(1,3),'origin',zeros(1,3),'radius',0,'length',0,'fieldstrength',0,'entrytype',strings), n, 1 );
 parameters = zeros(3,3,n)
@@ -72,7 +72,7 @@ parameters(:,:,5) = [component(5).origin;nz;nx];
 
 %SAMPLE1
 component(6).name = 'sample'
-component(6).angles = [0 0 22.5] %[ALPHA BETA GAMMA];
+component(6).angles = [0 0 22.2] %[ALPHA BETA GAMMA];
 component(6).origin = [1 0 1990e-3]
 [nz,nx] = angletonormalvector(component(6).angles);
 parameters(:,:,6) = [component(6).origin; nz;nx]
@@ -80,8 +80,8 @@ parameters(:,:,6) = [component(6).origin; nz;nx]
 
 %SOLENOID 2
 component(7).name = 'solenoid2'
-component(7).angles = [0 0 225]
-component(7).origin = [1 -(130e-3)*cos(pi/4) (1990e-3)-((130e-3)*cos(pi/4))]
+component(7).angles = [0 0 224.4]
+component(7).origin = [1 -(130e-3)*sind(44.4) (1990e-3)-((130e-3)*cosd(44.4))]
 component(7).radius = 1e-3
 component(7).length = 750e-3
 component(7).fieldstrength = 0
@@ -92,15 +92,15 @@ parameters(:,:,7) = [component(7).origin;nz;nx]
 
 %DIPOLE 2
 component(8).name = 'dipole2'
-component(8).angles = [0 0 225]
-component(8).origin = [1 -(880e-3)*cos(pi/4) (1990e-3)-((880e-3)*cos(pi/4))]
+component(8).angles = [0 0 224.4]
+component(8).origin = [1 -(880e-3)*sind(44.4) (1990e-3)-((880e-3)*cosd(44.4))]
 component(8).entrytype = 'sudden'
 [nz,nx] = angletonormalvector(component(8).angles)
 parameters(:,:,8) = [component(8).origin;nz;nx]
 
-%HDT 1
+%HDT 2
 component(9).name = 'hexapole dipole transition'
-component(9).origin = [1 -(880e-3)*cos(pi/4) (1990e-3)-((880e-3)*cos(pi/4))]
+component(9).origin = [1 -(880e-3)*sind(44.4) (1990e-3)-((880e-3)*cosd(44.4))]
 component(9).angles = [0 0 0]
 component(9).gaussparam = [5.7e-4 0.5 0.1]
 [nz,nx] = angletonormalvector(component(9).angles)
@@ -108,8 +108,8 @@ parameters(:,:,3) = [component(9).origin;nz;nx]
 
 %HEXAPOLE 2
 component(10).name = 'hexapole2'
-component(10).angles = [0 0 225]
-component(10).origin = [1 -(1450e-3)*cos(pi/4) (1990e-3)-((1450e-3)*cos(pi/4))]
+component(10).angles = [0 0 224.4]
+component(10).origin = [1 -(1450e-3)*sind(44.4) (1990e-3)-((1450e-3)*cosd(44.4))]
 component(10).radius = 2.4e-3
 component(10).length = 800e-3
 component(10).fieldstrength = 1.25
@@ -118,16 +118,16 @@ parameters(:,:,10) = [component(10).origin;nz;nx]
 
 %DETECTOR
 component(11).name = 'detector'
-component(11).angles = [0 0 225] %[ALPHA BETA GAMMA];
-component(11).origin = [1 -(3100e-3)*cos(pi/4) (1990e-3)-((3100e-3)*cos(pi/4))]
-component(11).radius = 3e-3;
+component(11).angles = [0 0 224.4] %[ALPHA BETA GAMMA];
+component(11).origin = [1 -(3100e-3)*sind(44.4) (1990e-3)-((3100e-3)*cosd(44.4))]
+component(11).radius = 1.2e-3;
 [nz,nx] = angletonormalvector(component(11).angles);
 parameters(:,:,11) = [component(11).origin;nz;nx]
 
 %Realblockaperture
 component(12).name = 'realblockaperture'
-component(12).angles = [0 0 225]
-component(12).origin = [1 -(1450e-3)*cos(pi/4) (1990e-3)-((1450e-3)*cos(pi/4))]
+component(12).angles = [0 0 224.4]
+component(12).origin = [1 -(1450e-3)*sind(44.4) (1990e-3)-((1450e-3)*cosd(44.4))]
 component(12).radius = 0.4e-3
 component(12).height = 5e-3
 component(12).width = 20e-6

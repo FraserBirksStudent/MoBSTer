@@ -46,8 +46,8 @@ parameters(:,:,3) = [component(3).origin; nz; nx];
 %component(4).name =
 %component(4).angles =
 %component(4).origin =
-[nz,nx] = angletonormalvector(component(4).angles);
-parameters(:,:,4) = [component(4).origin;nz;nx];
+%[nz,nx] = angletonormalvector(component(4).angles);
+%parameters(:,:,4) = [component(4).origin;nz;nx];
 
 
 %% Run simulation

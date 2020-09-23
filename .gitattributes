@@ -15,3 +15,4 @@
 *.sfx -crlf -diff -merge
 *.sltx -crlf -diff -merge
 *.xlsx -crlf -diff -merge
+*.png -crlf -diff -merge
