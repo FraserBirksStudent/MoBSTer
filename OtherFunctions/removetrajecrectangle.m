@@ -1,3 +1,8 @@
+%% copyright notice
+% Copyright (c) 2020, Fraser Birks and William Allison.
+% All rights reserved.
+% This file is part of MoBSTer - a framework to simulate Molecular Beam Scattering Using Trajectories, subject to the GNU/GPL-3.0-or-later.
+
 function [newparticles, newtrajectories] = removetrajecrectangle(particles,trajectories,width,height,block)
 %% FUNCTION DEFINITION
 %this function finds the particles and corresponding trajectories for

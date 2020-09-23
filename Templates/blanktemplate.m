@@ -1,3 +1,8 @@
+%% copyright notice
+% Copyright (c) 2020, Fraser Birks and William Allison.
+% All rights reserved.
+% This file is part of MoBSTer - a framework to simulate Molecular Beam Scattering Using Trajectories, subject to the GNU/GPL-3.0-or-later.
+
 %% Information
 %This is a blank template: You need to completely create your own code in
 %the mobster framework! The initialisation step is included for you- but

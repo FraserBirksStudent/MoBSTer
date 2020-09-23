@@ -1,3 +1,8 @@
+%% copyright notice
+% Copyright (c) 2020, Fraser Birks and William Allison.
+% All rights reserved.
+% This file is part of MoBSTer - a framework to simulate Molecular Beam Scattering Using Trajectories, subject to the GNU/GPL-3.0-or-later.
+
 function [particles,trajectories] = simplesourcev2(N, param, Radius, zspacing, beamenergy)
 %% Function definition:
 %this function is a much faster version of the previous simple source

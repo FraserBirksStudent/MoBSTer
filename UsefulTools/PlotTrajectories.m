@@ -1,3 +1,7 @@
+%% copyright notice
+% Copyright (c) 2020, Fraser Birks and William Allison.
+% All rights reserved.
+% This file is part of MoBSTer - a framework to simulate Molecular Beam Scattering Using Trajectories, subject to the GNU/GPL-3.0-or-later.
 %% function definition
 %This is just a tool that is pre built to let you plot trajectories (like
 %the section of the UI but easier to edit- for example if you want to take

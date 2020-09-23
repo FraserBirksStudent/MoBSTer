@@ -1,3 +1,8 @@
+%% copyright notice
+% Copyright (c) 2020, Fraser Birks and William Allison.
+% All rights reserved.
+% This file is part of MoBSTer - a framework to simulate Molecular Beam Scattering Using Trajectories, subject to the GNU/GPL-3.0-or-later.
+
 function [particles, trajectories] = aperture(particles,trajectories,param,radius)
 %% FUNCTION DEFINITION
 %This is assumed to be an infinitely thin aperture, and does the following:

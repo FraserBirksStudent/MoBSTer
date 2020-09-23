@@ -1,3 +1,8 @@
+%% copyright notice
+% Copyright (c) 2020, Fraser Birks and William Allison.
+% All rights reserved.
+% This file is part of MoBSTer - a framework to simulate Molecular Beam Scattering Using Trajectories, subject to the GNU/GPL-3.0-or-later.
+
 %% Information
 %This is an example of doing a specular scan of the sample in the cambridge
 %machine layout, for different detector aperture sizes (2.4mm,6mm and 1mm

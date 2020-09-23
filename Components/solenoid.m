@@ -1,3 +1,8 @@
+%% copyright notice
+% Copyright (c) 2020, Fraser Birks and William Allison.
+% All rights reserved.
+% This file is part of MoBSTer - a framework to simulate Molecular Beam Scattering Using Trajectories, subject to the GNU/GPL-3.0-or-later.
+
 function [particles,trajectories] = solenoid(particles,trajectories,param,radius,length,gmr,Bstrength,entrytransition)
 %% function definition
 %This function represents the solenoid instrument. This function will carry
