@@ -70,14 +70,13 @@ spinvector = normfactors.*unnormalised;
 %information in the particle structure
 
 particles = repmat(struct('position',zeros(1,3),'velocity',zeros(1,3),'spin',zeros(1,2),'weight',1,'time',0,'Bfield',[0 0 1]), N, 1 );
-trajectories = repmat(struct('position',zeros(100,3),'spin',zeros(100,2),'Numberofentries',1),N,1);
+trajectories = repmat(struct('position',zeros(100,3),'Numberofentries',1),N,1);
 for int = 1:N
     %Add all the initial data to the particles structure.
     particles(int).position = points2(int,:);
     particles(int).velocity = v(int,:);
     particles(int).spin = spinvector(int,:);
     trajectories(int).position(1,:) = points2(int,:);
-    trajectories(int).spin(1,:) = particles(int).spin;
 end
 end
 
